@@ -16,6 +16,7 @@ class SessionsController < UIViewController
       if result['auth_token']
         user.save_token(@login_form.username.text, result['auth_token'])
         display_message("Welcome", "Welcome, #{@login_form.username.text}")
+        show_view_tasks_button
       else
         display_message("Error", "Invalid Credentials.")
       end
@@ -33,6 +34,15 @@ class SessionsController < UIViewController
 
   def user
     @current_user ||= User.new
+  end
+
+  def show_view_tasks_button
+    @login_form.addSubview(@login_form.view_tasks_button)
+    @login_form.view_tasks_button.addTarget(self, action: "show_tasks", forControlEvents: UIControlEventTouchUpInside)
+  end
+
+  def show_tasks
+    api_client.get_tasks
   end
 
 end

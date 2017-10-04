@@ -14,4 +14,14 @@ class ApiClient
     end
   end
 
+  def get_tasks
+    auth_token = App::Persistence['auth_token']
+    @client.headers["Authorization"] = "Token token=#{App::Persistence['auth_token']}"
+    @client.get("api/user_tasks") do |result|
+      # block.call(result.object)
+      puts result.object
+
+    end
+  end
+
 end
