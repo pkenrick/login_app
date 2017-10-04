@@ -1,5 +1,9 @@
 class AppDelegate
+  include CDQ
+
   def application(application, didFinishLaunchingWithOptions:launchOptions)
+    cdq.setup
+
     sessionsController = SessionsController.alloc.init
     sessionsController.title = 'Login App'
     sessionsController.view.backgroundColor = UIColor.whiteColor

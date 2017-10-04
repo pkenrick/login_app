@@ -18,3 +18,4 @@ Motion::Project::App.setup do |app|
   app.codesign_certificate = 'iPhone Developer: William Kenrick (Y5NZ3V5728)'
   app.provisioning_profile = '/Users/paulkenrick/Projects/personal/login_test/login_app/firstprofile.mobileprovision'
 end
+task :"build:simulator" => :"schema:build"
